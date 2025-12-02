@@ -1,0 +1,124 @@
+/* Бүх элементүүдэд үйлчлэх үндсэн загвар */
+* {
+    box-sizing: border-box; /* Бүх элементүүдийн өргөн, өндрийг тооцоолохдоо border, padding-ийг оруулах */
+}
+
+/* Солонгон өнгийн арын фон, хөдөлгөөнтэй */
+.rainbow-bg {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 400% 400%; /* Том хэмжээтэй background-ийг хөдөлгөхөд зориулагдсан */
+    animation: rainbow 8s ease infinite; /* 8 секундын турш, төгсгөлгүй эргэлдэх хөдөлгөөн */
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; } 
+    50% { background-position: 100% 50%; } /* Арын фонгийн байрлалыг 50%-иар хөдөлгөнө */
+    100% { background-position: 0% 50%; }
+}
+
+/* Дотогш орж ирэх үсрэлттэй хөдөлгөөн (Bounce In) */
+.bounce-in {
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; } /* Эхлэл: жижиг, бүдэг */
+    50% { transform: scale(1.05); }          /* Дунд: бага зэрэг томрох */
+    70% { transform: scale(0.9); }           /* Эргээд агших */
+    100% { transform: scale(1); opacity: 1; } /* Төгсгөл: хэвийн хэмжээ, тод */
+}
+
+/* Эргэлдэх хөдөлгөөн (Wiggle) */
+.wiggle {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); } /* Эхлэл, төгсгөл: хэвийн */
+    25% { transform: rotate(-5deg); }      /* Зүүн тийш -5 градус */
+    75% { transform: rotate(5deg); }       /* Баруун тийш +5 градус */
+}
+
+/* Хөвөх хөдөлгөөн (Float) */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); } /* Хэвийн байрлал */
+    50% { transform: translateY(-10px); }    /* Дээш 10px хөдлөх */
+}
+
+/* Дохионы үсэг/гарын загвар */
+.sign-hand {
+    font-size: 4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.sign-hand:hover {
+    transform: scale(1.2) rotate(10deg); /* Хувьсгалт: томруулж, бага зэрэг эргүүлэх */
+}
+
+/* Тоглоомын картын үндсэн загвар */
+.game-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Дээш хөдөлж, бага зэрэг томрох */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Сүүдэр нэмэх */
+}
+
+/* Өнгөний тоглоомын дугуй товчлуур */
+.color-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.color-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Хөгжмийн элементийн хөвөх хөдөлгөөн */
+.music-note {
+    animation: musicFloat 2s ease-in-out infinite;
+}
+
+@keyframes musicFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); } /* Дээш хөвж, эргэлдэх */
+}
+
+/* Амжилттай болсон үеийн цохилтын хөдөлгөөн (Success Pulse) */
+.success-animation {
+    animation: successPulse 0.6s ease-in-out;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); background-color: #10b981; } /* Томрох, ногоон өнгөөр гэрэлтэх */
+    100% { transform: scale(1); }
+}
+.sign-emoji {
+    display: inline-block;
+    font-size: 2.5rem;
+    animation: handMove 0.8s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+@keyframes handMove {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-4px) rotate(-8deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-4px) rotate(8deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}

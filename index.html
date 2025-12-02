@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дохионы Хэлний Сургалт</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-full">
+    <div class="min-h-full rainbow-bg">
+        <div class="fixed top-10 left-10 text-4xl float">
+            🌟
+        </div>
+        <div class="fixed top-20 right-20 text-3xl float" style="animation-delay: 1s;">
+            🎈
+        </div>
+        <div class="fixed bottom-20 left-20 text-3xl float" style="animation-delay: 2s;">
+            🦋
+        </div>
+        <header class="text-white py-12 text-center relative">
+            <div class="container mx-auto px-4">
+                <h1 id="main-title" class="text-5xl md:text-7xl font-bold mb-6 bounce-in">🌈 Хүүхдийн Хөгжлийн Төв 🌈</h1>
+                <p id="subtitle" class="text-2xl md:text-3xl opacity-90 bounce-in" style="animation-delay: 0.5s;">Бүх хүүхэд хамтдаа суралцая! 👫👬👭</p>
+            </div>
+        </header>
+        <main class="container mx-auto px-4 pb-12">
+            <section class="bg-white rounded-3xl shadow-2xl p-8 mb-12 bounce-in" style="animation-delay: 1s;">
+                <div class="text-center">
+                    <div class="text-8xl mb-6">
+                        🎯🎨🎵
+                    </div>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Тавтай морилно уу!</h2>
+                    <p id="welcome-message" class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Энэ бол дохионы хэл сурахыг хүссэн бүх хүмүүст зориулсан интерактив сайт юм! Та энд дохионы хэлний үндсийг сурч, өдөр тутмын харилцаанд ашиглах боломжтой. Үг бичээд дохионы хэлээр хэрхэн илэрхийлэхийг харж, дасгал хийж сурцгаая! 🌟</p>
+                </div>
+            </section>
+            <section class="bg-gradient-to-r from-purple-400 to-pink-400 rounded-3xl p-8 mb-12 text-white">
+                <h2 id="sign-language-title" class="text-4xl font-bold text-center mb-8">👋 Дохионы хэл сурцгаая! 👋</h2>
+                <div class="bg-white bg-opacity-20 rounded-2xl p-6 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-center">✍️ Үг бичээд дохионы хэлээр харах</h3>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="text" id="text-input" placeholder="Энд үгээ бичнэ үү..." class="flex-1 px-4 py-3 rounded-xl text-black text-lg font-bold" onkeyup="convertToSignLanguage(this.value)">
+                        <button onclick="clearText()" class="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-xl font-bold transition-all"> Арилгах </button>
+                    </div>
+                    <div id="sign-output" class="mt-6 p-4 bg-white bg-opacity-30 rounded-xl min-h-20 text-center">
+                        <p class="text-xl">Үг бичээд дохионы хэлээр харж болно! 👆</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-6 text-center">35 Цагаан толгойн дохио</h3>
+                        <div class="max-h-96 overflow-y-auto">
+                            <div class="grid grid-cols-5 gap-3 mb-4">
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('А', '✊')"> ✊ </div> <p class="mt-1 text-sm font-bold">А</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Б', '🤚')"> 🤚 </div> <p class="mt-1 text-sm font-bold">Б</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('В', '✌️')"> ✌️ </div> <p class="mt-1 text-sm font-bold">В</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Г', '👍')"> 👍 </div> <p class="mt-1 text-sm font-bold">Г</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Д', '👆')"> 👆 </div> <p class="mt-1 text-sm font-bold">Д</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Е', '🤏')"> 🤏 </div> <p class="mt-1 text-sm font-bold">Е</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ё', '🤌')"> 🤌 </div> <p class="mt-1 text-sm font-bold">Ё</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ж', '🤞')"> 🤞 </div> <p class="mt-1 text-sm font-bold">Ж</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('З', '🤟')"> 🤟 </div> <p class="mt-1 text-sm font-bold">З</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('И', '☝️')"> ☝️ </div> <p class="mt-1 text-sm font-bold">И</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Й', '🖖')"> 🖖 </div> <p class="mt-1 text-sm font-bold">Й</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('К', '🤘')"> 🤘 </div> <p class="mt-1 text-sm font-bold">К</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Л', '👌')"> 👌 </div> <p class="mt-1 text-sm font-bold">Л</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('М', '✋')"> ✋ </div> <p class="mt-1 text-sm font-bold">М</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Н', '🖐️')"> 🖐️ </div> <p class="mt-1 text-sm font-bold">Н</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('О', '⭕')"> ⭕ </div> <p class="mt-1 text-sm font-bold">О</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ө', '🔵')"> 🔵 </div> <p class="mt-1 text-sm font-bold">Ө</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('П', '🖕')"> 🖕 </div> <p class="mt-1 text-sm font-bold">П</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Р', '👊')"> 👊 </div> <p class="mt-1 text-sm font-bold">Р</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('С', '🤙')"> 🤙 </div> <p class="mt-1 text-sm font-bold">С</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Т', '👎')"> 👎 </div> <p class="mt-1 text-sm font-bold">Т</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('У', '🤜')"> 🤜 </div> <p class="mt-1 text-sm font-bold">У</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ү', '🤛')"> 🤛 </div> <p class="mt-1 text-sm font-bold">Ү</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ф', '🫰')"> 🫰 </div> <p class="mt-1 text-sm font-bold">Ф</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Х', '🫵')"> 🫵 </div> <p class="mt-1 text-sm font-bold">Х</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ц', '🫴')"> 🫴 </div> <p class="mt-1 text-sm font-bold">Ц</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ч', '🫳')"> 🫳 </div> <p class="mt-1 text-sm font-bold">Ч</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ш', '🫲')"> 🫲 </div> <p class="mt-1 text-sm font-bold">Ш</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Щ', '🫱')"> 🫱 </div> <p class="mt-1 text-sm font-bold">Щ</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ъ', '🫳')"> ✋ </div> <p class="mt-1 text-sm font-bold">Ъ</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ы', '🤚')"> 👋 </div> <p class="mt-1 text-sm font-bold">Ы</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ь', '👋')"> 🤏 </div> <p class="mt-1 text-sm font-bold">Ь</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Э', '👋')"> 👋 </div> <p class="mt-1 text-sm font-bold">Э</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Ю', '🤗')"> 🤗 </div> <p class="mt-1 text-sm font-bold">Ю</p> </div>
+                                <div class="text-center"> <div class="sign-hand text-2xl" onclick="showSign('Я', '🙌')"> 🙌 </div> <p class="mt-1 text-sm font-bold">Я</p> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-6 text-center">Өргөн хэрэглээний үгс</h3>
+                        <div class="max-h-96 overflow-y-auto space-y-3">
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Сайн байна уу</span> <div class="sign-hand text-lg" onclick="showSignWord('Сайн байна уу', 'Баруун гараа дээш өргөж, алгаа урагш харуулж, хөдөлгөх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Баярлалаа</span> <div class="sign-hand text-lg" onclick="showSignWord('Баярлалаа', 'Хоёр гараа цээжний өмнө нийлүүлж, урагш сунгах')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Би чамд хайртай</span> <div class="sign-hand text-lg" onclick="showSignWord('Би чамд хайртай', 'Өөрийгөө заах → Харсан хүнээ заах → Зүрх дээр гар тавих')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Уучлаарай</span> <div class="sign-hand text-lg" onclick="showSignWord('Уучлаарай', 'Баруун гараа зүүн мөрөн дээр тавиж, тойруулах')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Тийм</span> <div class="sign-hand text-lg" onclick="showSignWord('Тийм', 'Толгойгоо дээш доош хөдөлгөх эсвэл эрхий хуруугаа дээш өргөх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Үгүй</span> <div class="sign-hand text-lg" onclick="showSignWord('Үгүй', 'Толгойгоо зүүн баруун хөдөлгөх эсвэл гараа хажуу тийш сэгсрэх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Ус</span> <div class="sign-hand text-lg" onclick="showSignWord('Ус', 'Баруун гараа аманд аваачиж, ууж байгаа дүр үзүүлэх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Хоол</span> <div class="sign-hand text-lg" onclick="showSignWord('Хоол', 'Хурууны үзүүрээр аманд хүнс хийж байгаа дүр үзүүлэх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Ээж</span> <div class="sign-hand text-lg" onclick="showSignWord('Ээж', 'Эрхий хуруугаа хацар дээр тавиж, доош буулгах')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Аав</span> <div class="sign-hand text-lg" onclick="showSignWord('Аав', 'Эрхий хуруугаа духан дээр тавиж, доош буулгах')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Найз</span> <div class="sign-hand text-lg" onclick="showSignWord('Найз', 'Хоёр гарын долоовор хуруугаа холбож, хөдөлгөх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Сургууль</span> <div class="sign-hand text-lg" onclick="showSignWord('Сургууль', 'Зүүн гараа дэвсгэр болгож, баруун гараар дээр нь бичих дүр үзүүлэх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Гэр</span> <div class="sign-hand text-lg" onclick="showSignWord('Гэр', 'Хоёр гараа дээш нийлүүлж, дээвэр хийх дүр үзүүлэх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Тусламж</span> <div class="sign-hand text-lg" onclick="showSignWord('Тусламж', 'Зүүн гарын дээр баруун гараа тавиж, дээш өргөх')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                            <div class="flex items-center justify-between bg-white bg-opacity-30 rounded-xl p-3"><span class="text-lg font-bold">Өвдөж байна</span> <div class="sign-hand text-lg" onclick="showSignWord('Өвдөж байна', 'Хоёр долоовор хуруугаа өвдөж байгаа газар заах')"><span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm">Дохио харах</span> </div> </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sign-display" class="mt-8 text-center bg-white bg-opacity-30 rounded-2xl p-6 min-h-24 flex items-center justify-center">
+                    <p class="text-2xl">Дохио дарж үзээрэй! 👆</p>
+                </div>
+            </section>
+            <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🎨
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Өнгө таних тоглоом</h3>
+                        <div class="grid grid-cols-3 gap-3 mb-4">
+                            <div class="color-button" style="background-color: #ff6b6b;" onclick="playColorGame('улаан', '#ff6b6b')"></div>
+                            <div class="color-button" style="background-color: #4ecdc4;" onclick="playColorGame('цэнхэр', '#4ecdc4')"></div>
+                            <div class="color-button" style="background-color: #45b7d1;" onclick="playColorGame('хөх', '#45b7d1')"></div>
+                            <div class="color-button" style="background-color: #96ceb4;" onclick="playColorGame('ногоон', '#96ceb4')"></div>
+                            <div class="color-button" style="background-color: #feca57;" onclick="playColorGame('шар', '#feca57')"></div>
+                            <div class="color-button" style="background-color: #ff9ff3;" onclick="playColorGame('ягаан', '#ff9ff3')"></div>
+                        </div>
+                        <p id="color-result" class="text-lg font-bold">Өнгө сонгоорой!</p>
+                    </div>
+                </div>
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4 music-note">
+                            🎵
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Хөгжим тоглоом</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="playMusic('🥁')">🥁</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="playMusic('🎹')">🎹</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="playMusic('🎸')">🎸</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="playMusic('🎺')">🎺</button>
+                        </div>
+                        <p class="text-lg">Хөгжмөр зэмсэг дарж үзээрэй!</p>
+                    </div>
+                </div>
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🔢
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Тоо тоолох</h3>
+                        <div class="grid grid-cols-3 gap-3 mb-4">
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(1)">1️⃣</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(2)">2️⃣</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(3)">3️⃣</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(4)">4️⃣</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(5)">5️⃣</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-3 rounded-xl text-2xl font-bold transition-all" onclick="countNumber(6)">6️⃣</button>
+                        </div>
+                        <p id="number-display" class="text-xl font-bold">Тоо дарж үзээрэй!</p>
+                    </div>
+                </div>
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            ⭐
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Дүрс таних</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-4xl transition-all" onclick="identifyShape('дөрвөлжин', '⬜')">⬜</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-4xl transition-all" onclick="identifyShape('тойрог', '⭕')">⭕</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-4xl transition-all" onclick="identifyShape('гурвалжин', '🔺')">🔺</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-4xl transition-all" onclick="identifyShape('од', '⭐')">⭐</button>
+                        </div>
+                        <p id="shape-result" class="text-lg font-bold">Дүрс сонгоорой!</p>
+                    </div>
+                </div>
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🐾
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Амьтны дуу</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="animalSound('нохой', '🐕', 'Хав хав!')">🐕</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="animalSound('муур', '🐱', 'Мяу мяу!')">🐱</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="animalSound('үхэр', '🐄', 'Мөө мөө!')">🐄</button>
+                            <button class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="animalSound('арслан', '🦁', 'Аррр!')">🦁</button>
+                        </div>
+                        <p id="animal-result" class="text-lg font-bold">Амьтан сонгоорой!</p>
+                    </div>
+                </div>
+                <div class="game-card rounded-2xl p-6 text-white">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🧠
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Ой тогтоох тоглоом</h3>
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <button id="memory-1" class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="memoryGame(1)">❓</button>
+                            <button id="memory-2" class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="memoryGame(2)">❓</button>
+                            <button id="memory-3" class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="memoryGame(3)">❓</button>
+                            <button id="memory-4" class="bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl text-3xl transition-all" onclick="memoryGame(4)">❓</button>
+                        </div>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded-xl font-bold transition-all" onclick="startMemoryGame()">Тоглоом эхлүүлэх</button>
+                        <p id="memory-result" class="text-lg font-bold mt-2">Тоглоом эхлүүлээрэй!</p>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-white rounded-3xl shadow-2xl p-8 mb-12">
+                <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">🏆 Таны ахиц дэвшил</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🌟
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Дохионы хэл</h3>
+                        <div class="bg-gray-200 rounded-full h-4 mb-2">
+                            <div id="sign-progress" class="bg-blue-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <p id="sign-score" class="text-gray-600">0/6 үсэг</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🎨
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Өнгө таних</h3>
+                        <div class="bg-gray-200 rounded-full h-4 mb-2">
+                            <div id="color-progress" class="bg-green-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <p id="color-score" class="text-gray-600">0/6 өнгө</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">
+                            🔢
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Тоо тоолох</h3>
+                        <div class="bg-gray-200 rounded-full h-4 mb-2">
+                            <div id="number-progress" class="bg-purple-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <p id="number-score" class="text-gray-600">0/6 тоо</p>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-gradient-to-r from-orange-400 to-red-500 rounded-3xl p-8 text-white mb-12">
+                <h2 class="text-4xl font-bold text-center mb-8">💪 Булчингийн дасгал</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">👄 Уруулын дасгал</h3>
+                        <div class="space-y-4">
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Уруулаа дугуйлж хөдөлгө', '😗➡️😙')">
+                                <div class="text-3xl mb-2"> 😗➡️😙 </div>
+                                <p class="font-bold">Уруул дугуйлах</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Уруулаа цоолж, дараа нь тэлэх', '😗💋😊')">
+                                <div class="text-3xl mb-2"> 😗💋😊 </div>
+                                <p class="font-bold">Уруул цоолох</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Уруулаа дээш доош хөдөлгө', '😊⬆️⬇️')">
+                                <div class="text-3xl mb-2"> 😊⬆️⬇️ </div>
+                                <p class="font-bold">Уруул хөдөлгөх</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">👅 Хэлний дасгал</h3>
+                        <div class="space-y-4">
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Хэлээ гадагш гарга', '😛👅')">
+                                <div class="text-3xl mb-2"> 😛👅 </div>
+                                <p class="font-bold">Хэл гаргах</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Хэлээ дээш доош хөдөлгө', '😋⬆️⬇️')">
+                                <div class="text-3xl mb-2"> 😋⬆️⬇️ </div>
+                                <p class="font-bold">Хэл хөдөлгөх</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Хэлээ дугуйлж хөдөлгө', '😋🔄')">
+                                <div class="text-3xl mb-2"> 😋🔄 </div>
+                                <p class="font-bold">Хэл дугуйлах</p>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4 text-center">🫁 Амьсгалын дасгал</h3>
+                        <div class="space-y-4">
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Гүн амьсгал ав', '😤💨')">
+                                <div class="text-3xl mb-2"> 😤💨 </div>
+                                <p class="font-bold">Гүн амьсгал</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Үлээж амьсгал гарга', '😮‍💨🎈')">
+                                <div class="text-3xl mb-2"> 😮‍💨🎈 </div>
+                                <p class="font-bold">Үлээх дасгал</p>
+                            </button>
+                            <button class="w-full bg-white bg-opacity-30 hover:bg-opacity-50 p-4 rounded-xl transition-all" onclick="startExercise('Шүгэл дуугарах', '🤫🎵')">
+                                <div class="text-3xl mb-2"> 🤫🎵 </div>
+                                <p class="font-bold">Шүгэл дуугарах</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="exercise-display" class="mt-8 bg-white bg-opacity-30 rounded-2xl p-6 text-center min-h-24 flex items-center justify-center">
+                    <p class="text-2xl font-bold">Дасгал сонгож эхлүүлээрэй! 💪</p>
+                </div>
+            </section>
+            <section class="bg-gradient-to-r from-green-400 to-blue-500 rounded-3xl p-8 text-white">
+                <h2 class="text-4xl font-bold text-center mb-8">💡 Эцэг эхчүүдэд зориулсан зөвлөгөө</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4">🏠 Гэрт дасгал хийх</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li>• Өдөр бүр 15-20 минут хамтдаа тоглоорой</li>
+                            <li>• Хүүхдийн сонирхлыг дагаарай</li>
+                            <li>• Алдаа гаргасан ч урам зориг өгөөрэй</li>
+                            <li>• Амжилт бүрийг тэмдэглээрэй</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4">🤝 Хамтын ажиллагаа</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li>• Бусад хүүхдүүдтэй хамт тоглуулаарай</li>
+                            <li>• Багш нартай тогтмол холбоо барьж байгаарай</li>
+                            <li>• Мэргэжилтнүүдийн зөвлөгөө авч байгаарай</li>
+                            <li>• Тэвчээртэй, хайртай байгаарай</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-2xl p-6">
+                        <h3 class="text-2xl font-bold mb-4">💪 Булчингийн дасгал</h3>
+                        <ul class="space-y-3 text-lg">
+                            <li>• Өдөрт 3-5 удаа булчингийн дасгал хийлгээрэй</li>
+                            <li>• Дасгал бүрийг 5-10 удаа давтаарай</li>
+                            <li>• Хүүхдийн ядарсан үед зогсоорой</li>
+                            <li>• Тоглоомын хэлбэрээр хийлгээрэй</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="text-white text-center py-8 opacity-75">
+            <p class="text-xl">🌈 Хүүхэд бүр онцгой, хүүхэд бүр чадварлаг! 🌈</p>
+            <p class="mt-2">© 2024 Хүүхдийн Хөгжлийн Төв. Бүх эрх хуулиар хамгаалагдсан.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+    </body>
+</html>
