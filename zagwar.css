@@ -1,0 +1,39 @@
+  
+body {
+            box-sizing: border-box;
+        }
+#main-title {
+    margin-top: 20px; /* хүсвэл 20–80px болгож өөрчилж болно */
+}
+nav {
+    padding-top: 20px;
+    
+}
+section {
+    padding-left: 1px; /* өөрийн хүссэнээр 10–30px болгож болно */
+}
+            .rainbow-bg {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 400% 400%;
+            animation: rainbow 8s ease infinite;
+        }
+.bounce-in {
+    animation: bounceIn 1s ease forwards;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
