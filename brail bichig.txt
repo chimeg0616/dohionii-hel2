@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="mn">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тусгай Хэрэгцээт Хүүхдүүдтэй Харилцах Сургалт</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100%;
+      height: 100%;
+    }
+    
+    html {
+      height: 100%;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+    
+    .header h1 {
+      font-size: 48px;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    
+    .header p {
+      font-size: 20px;
+      margin: 0;
+      opacity: 0.95;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .tab-button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 15px 30px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .tab-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .tab-button.active {
+      background: white;
+      color: #667eea;
+      border-color: white;
+    }
+    
+    .content-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      display: none;
+    }
+    
+    .content-card.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .section-title {
+      color: #667eea;
+      font-size: 32px;
+      margin: 0 0 25px 0;
+      font-weight: 700;
+    }
+    
+    .lesson-item {
+      background: #f8f9ff;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 5px solid #667eea;
+      transition: all 0.3s ease;
+    }
+    
+    .lesson-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    }
+    
+    .lesson-title {
+      color: #333;
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+    
+    .lesson-content {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .alphabet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .alphabet-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .alphabet-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .alphabet-letter {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    
+    .braille-dots {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    
+    .tip-box {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    .tip-title {
+      color: #856404;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+    
+    .tip-content {
+      color: #856404;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    .practice-section {
+      background: #e8f5e9;
+      padding: 25px;
+      border-radius: 12px;
+      margin-top: 25px;
+    }
+    
+    .practice-title {
+      color: #2e7d32;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+    }
+    
+    .practice-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 16px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="header">
+    <h1 id="main-title">Тусгай Хэрэгцээт Хүүхдүүдтэй Харилцах</h1>
+    <p id="subtitle">Дохионы хэл, брайл бичиг болон харилцааны арга барилыг суралцаарай</p>
+   </div>
+   <div class="tabs"><button class="tab-button active" data-tab="sign-language">🤟 Дохионы хэл</button> <button class="tab-button" data-tab="braille">⠃ Брайл бичиг</button> <button class="tab-button" data-tab="communication">💬 Харилцааны арга</button>
+   </div>
+   <div id="sign-language" class="content-card active">
+    <h2 class="section-title" id="sign-language-title">Дохионы хэл</h2>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Дохионы хэл гэж юу вэ?</h3>
+     <p class="lesson-content">Дохионы хэл нь сонсголын бэрхшээлтэй хүмүүсийн харилцааны үндсэн хэрэгсэл юм. Энэ нь гар, биеийн хөдөлгөөн, царайн хувирал ашиглан санаа бодлоо илэрхийлдэг бүрэн хэмжээний хэл юм.</p>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Үндсэн зарчим</h3>
+     <p class="lesson-content">• Гарын хэлбэр, байрлал, хөдөлгөөн чухал<br>
+       • Царайн хувирал утга санааг илэрхийлнэ<br>
+       • Биеийн хэл нь нэмэлт мэдээлэл өгнө<br>
+       • Анхаарал хандуулж, нүдээр харах нь чухал</p>
+    </div>
+    <div class="tip-box">
+     <h4 class="tip-title">💡 Зөвлөмж</h4>
+     <p class="tip-content">Дохионы хэл сурахдаа тогтмол дадлага хийх, бодит харилцаанд оролцох нь хамгийн үр дүнтэй. Сонсголын бэрхшээлтэй хүмүүстэй харилцахдаа тэвчээртэй, ойлгомжтой хандаарай.</p>
+    </div>
+    <div class="practice-section">
+     <h3 class="practice-title">Анхны дасгалууд</h3>
+     <div class="practice-item">
+      ✋ Мэндчилгээ: Гараа өргөж, алгаа харуулан сэгсрэх
+     </div>
+     <div class="practice-item">
+      👍 Баярлалаа: Эрхий хуруугаа дээш чиглүүлэх
+     </div>
+     <div class="practice-item">
+      🤝 Уучлаарай: Гараа цээжин дээр эргүүлэх
+     </div>
+     <div class="practice-item">
+      ❤️ Хайртай: Хоёр гараа цээжин дээр хөндлөн тавих
+     </div>
+    </div>
+   </div>
+   <div id="braille" class="content-card">
+    <h2 class="section-title" id="braille-title">Брайл бичиг</h2>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Брайл бичиг гэж юу вэ?</h3>
+     <p class="lesson-content">Брайл бичиг нь хараагүй болон бага харааны хүмүүсийн уншиж бичих систем юм. Энэ нь 6 цэгийн комбинацаар үсэг, тоо, тэмдэгтүүдийг илэрхийлдэг.</p>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Брайл системийн бүтэц</h3>
+     <p class="lesson-content">• 6 цэг нь 2 багана, 3 мөрөөр байрлана<br>
+       • Зүүн багана: 1, 2, 3 цэг (дээрээс доош)<br>
+       • Баруун багана: 4, 5, 6 цэг (дээрээс доош)<br>
+       • Цэгүүдийн янз бүрийн хослол нь өөр өөр үсгийг илэрхийлнэ</p>
+    </div>
+    <div class="alphabet-grid">
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       А
+      </div>
+      <div class="braille-dots">
+       ⠁
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Б
+      </div>
+      <div class="braille-dots">
+       ⠃
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       В
+      </div>
+      <div class="braille-dots">
+       ⠺
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Г
+      </div>
+      <div class="braille-dots">
+       ⠛
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Д
+      </div>
+      <div class="braille-dots">
+       ⠙
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Е
+      </div>
+      <div class="braille-dots">
+       ⠑
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ё
+      </div>
+      <div class="braille-dots">
+       ⠡
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ж
+      </div>
+      <div class="braille-dots">
+       ⠚
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       З
+      </div>
+      <div class="braille-dots">
+       ⠵
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       И
+      </div>
+      <div class="braille-dots">
+       ⠊
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Й
+      </div>
+      <div class="braille-dots">
+       ⠯
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       К
+      </div>
+      <div class="braille-dots">
+       ⠅
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Л
+      </div>
+      <div class="braille-dots">
+       ⠇
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       М
+      </div>
+      <div class="braille-dots">
+       ⠍
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Н
+      </div>
+      <div class="braille-dots">
+       ⠝
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       О
+      </div>
+      <div class="braille-dots">
+       ⠕
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ө
+      </div>
+      <div class="braille-dots">
+       ⠪
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       П
+      </div>
+      <div class="braille-dots">
+       ⠏
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Р
+      </div>
+      <div class="braille-dots">
+       ⠗
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       С
+      </div>
+      <div class="braille-dots">
+       ⠎
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Т
+      </div>
+      <div class="braille-dots">
+       ⠞
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       У
+      </div>
+      <div class="braille-dots">
+       ⠥
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ү
+      </div>
+      <div class="braille-dots">
+       ⠳
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ф
+      </div>
+      <div class="braille-dots">
+       ⠋
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Х
+      </div>
+      <div class="braille-dots">
+       ⠓
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ц
+      </div>
+      <div class="braille-dots">
+       ⠉
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ч
+      </div>
+      <div class="braille-dots">
+       ⠟
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ш
+      </div>
+      <div class="braille-dots">
+       ⠱
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Щ
+      </div>
+      <div class="braille-dots">
+       ⠭
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ъ
+      </div>
+      <div class="braille-dots">
+       ⠷
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ы
+      </div>
+      <div class="braille-dots">
+       ⠮
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ь
+      </div>
+      <div class="braille-dots">
+       ⠾
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Э
+      </div>
+      <div class="braille-dots">
+       ⠫
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Ю
+      </div>
+      <div class="braille-dots">
+       ⠳
+      </div>
+     </div>
+     <div class="alphabet-card">
+      <div class="alphabet-letter">
+       Я
+      </div>
+      <div class="braille-dots">
+       ⠫
+      </div>
+     </div>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Математикийн тэмдэгтүүд</h3>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        +
+       </div>
+       <div class="braille-dots">
+        ⠖
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        -
+       </div>
+       <div class="braille-dots">
+        ⠤
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ×
+       </div>
+       <div class="braille-dots">
+        ⠦
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ÷
+       </div>
+       <div class="braille-dots">
+        ⠲
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        =
+       </div>
+       <div class="braille-dots">
+        ⠶
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        &gt;
+       </div>
+       <div class="braille-dots">
+        ⠕⠂
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        &lt;
+       </div>
+       <div class="braille-dots">
+        ⠂⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        %
+       </div>
+       <div class="braille-dots">
+        ⠨⠴
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Хөгжмийн тэмдэгтүүд</h3>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ♪
+       </div>
+       <div class="braille-dots">
+        ⠐⠹
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ♫
+       </div>
+       <div class="braille-dots">
+        ⠐⠱
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ♯
+       </div>
+       <div class="braille-dots">
+        ⠩
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ♭
+       </div>
+       <div class="braille-dots">
+        ⠣
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        𝄞
+       </div>
+       <div class="braille-dots">
+        ⠜⠌
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        𝄢
+       </div>
+       <div class="braille-dots">
+        ⠜⠬
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Брайл бичгийг албан ёсоор хүлээн зөвшөөрсөн улсууд</h3>
+     <p class="lesson-content"><strong>🌍 Дэлхийн 190 гаруй улс орон брайл бичгийг албан ёсоор хүлээн зөвшөөрсөн:</strong><br><br><strong>Азийн орнууд:</strong> Монгол, Хятад, Япон, Солонгос, Энэтхэг, Тайланд, Вьетнам, Малайз, Сингапур, Филиппин<br><br><strong>Европын орнууд:</strong> Их Британи, Франц, Герман, Орос, Итали, Испани, Швед, Норвеги, Данй, Финланд, Польш, Чех<br><br><strong>Америкийн орнууд:</strong> АНУ, Канад, Мексик, Бразил, Аргентин, Чили, Колумби<br><br><strong>Африкийн орнууд:</strong> Өмнөд Африк, Египет, Нигери, Кени, Гана<br><br><strong>Австрали ба Океани:</strong> Австрали, Шинэ Зеланд, Фижи</p>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Дэлхийн хэлүүдээр брайл бичиг</h3>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇲🇳 Монгол хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Сайн
+       </div>
+       <div class="braille-dots">
+        ⠎⠁⠊⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Байна
+       </div>
+       <div class="braille-dots">
+        ⠃⠁⠊⠝⠁
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇨🇳 Хятад хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        你好
+       </div>
+       <div class="braille-dots">
+        ⠝⠊⠓⠁⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        谢谢
+       </div>
+       <div class="braille-dots">
+        ⠭⠊⠑⠭⠊⠑
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇯🇵 Япон хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        こんにちは
+       </div>
+       <div class="braille-dots">
+        ⠪⠴⠝⠊⠗⠊⠓
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        ありがとう
+       </div>
+       <div class="braille-dots">
+        ⠁⠗⠊⠛⠁⠞⠥
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇰🇷 Солонгос хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        안녕하세요
+       </div>
+       <div class="braille-dots">
+        ⠁⠝⠝⠽⠓⠁⠎⠑⠽⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        감사합니다
+       </div>
+       <div class="braille-dots">
+        ⠅⠁⠍⠎⠁⠓⠁⠏⠝⠊⠙⠁
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇮🇳 Хинди хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        नमस्ते
+       </div>
+       <div class="braille-dots">
+        ⠝⠁⠍⠁⠎⠞⠑
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        धन्यवाद
+       </div>
+       <div class="braille-dots">
+        ⠙⠓⠁⠝⠽⠁⠺⠁⠙
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇬🇧 Англи хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Hello
+       </div>
+       <div class="braille-dots">
+        ⠓⠑⠇⠇⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Thank you
+       </div>
+       <div class="braille-dots">
+        ⠞⠓⠁⠝⠅ ⠽⠕⠥
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇫🇷 Франц хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Bonjour
+       </div>
+       <div class="braille-dots">
+        ⠃⠕⠝⠚⠕⠥⠗
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Merci
+       </div>
+       <div class="braille-dots">
+        ⠍⠑⠗⠉⠊
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇩🇪 Герман хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Hallo
+       </div>
+       <div class="braille-dots">
+        ⠓⠁⠇⠇⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Danke
+       </div>
+       <div class="braille-dots">
+        ⠙⠁⠝⠅⠑
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇷🇺 Орос хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Привет
+       </div>
+       <div class="braille-dots">
+        ⠏⠗⠊⠺⠑⠞
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Спасибо
+       </div>
+       <div class="braille-dots">
+        ⠎⠏⠁⠎⠊⠃⠕
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇪🇸 Испани хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Hola
+       </div>
+       <div class="braille-dots">
+        ⠓⠕⠇⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Gracias
+       </div>
+       <div class="braille-dots">
+        ⠛⠗⠁⠉⠊⠁⠎
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇧🇷 Португал хэл</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Olá
+       </div>
+       <div class="braille-dots">
+        ⠕⠇⠡
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Obrigado
+       </div>
+       <div class="braille-dots">
+        ⠕⠃⠗⠊⠛⠁⠙⠕
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🇦🇺 Австрали англи</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        G'day
+       </div>
+       <div class="braille-dots">
+        ⠛⠄⠙⠁⠽
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        Cheers
+       </div>
+       <div class="braille-dots">
+        ⠉⠓⠑⠑⠗⠎
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Дэлхийн цагаан толгойн хотууд</h3>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🏛️ Азийн орнуудын цагаан толгойнууд</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇲🇳 Улаанбаатар
+       </div>
+       <div class="braille-dots">
+        ⠥⠇⠁⠁⠝⠃⠁⠁⠞⠁⠗
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇨🇳 Бээжин
+       </div>
+       <div class="braille-dots">
+        ⠃⠑⠑⠚⠊⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇯🇵 Токио
+       </div>
+       <div class="braille-dots">
+        ⠞⠕⠅⠊⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇰🇷 Сөүл
+       </div>
+       <div class="braille-dots">
+        ⠎⠪⠥⠇
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇮🇳 Нью Дели
+       </div>
+       <div class="braille-dots">
+        ⠝⠽⠥ ⠙⠑⠇⠊
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🏰 Европын орнуудын цагаан толгойнууд</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇬🇧 Лондон
+       </div>
+       <div class="braille-dots">
+        ⠇⠕⠝⠙⠕⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇫🇷 Парис
+       </div>
+       <div class="braille-dots">
+        ⠏⠁⠗⠊⠎
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇩🇪 Берлин
+       </div>
+       <div class="braille-dots">
+        ⠃⠑⠗⠇⠊⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇷🇺 Москва
+       </div>
+       <div class="braille-dots">
+        ⠍⠕⠎⠅⠺⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇮🇹 Ром
+       </div>
+       <div class="braille-dots">
+        ⠗⠕⠍
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🌎 Америкийн орнуудын цагаан толгойнууд</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇺🇸 Вашингтон
+       </div>
+       <div class="braille-dots">
+        ⠺⠁⠱⠊⠝⠛⠞⠕⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇨🇦 Оттава
+       </div>
+       <div class="braille-dots">
+        ⠕⠞⠞⠁⠺⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇲🇽 Мехико
+       </div>
+       <div class="braille-dots">
+        ⠍⠑⠓⠊⠅⠕
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇧🇷 Бразилиа
+       </div>
+       <div class="braille-dots">
+        ⠃⠗⠁⠵⠊⠇⠊⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇦🇷 Буэнос Айрес
+       </div>
+       <div class="braille-dots">
+        ⠃⠥⠑⠝⠕⠎ ⠁⠊⠗⠑⠎
+       </div>
+      </div>
+     </div>
+     <h4 style="color: #667eea; margin: 20px 0 15px 0; font-size: 18px;">🌍 Африк ба Океанийн цагаан толгойнууд</h4>
+     <div class="alphabet-grid">
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇿🇦 Кейптаун
+       </div>
+       <div class="braille-dots">
+        ⠅⠑⠊⠏⠞⠁⠥⠝
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇪🇬 Каир
+       </div>
+       <div class="braille-dots">
+        ⠅⠁⠊⠗
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇳🇬 Абужа
+       </div>
+       <div class="braille-dots">
+        ⠁⠃⠥⠚⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇦🇺 Канберра
+       </div>
+       <div class="braille-dots">
+        ⠅⠁⠝⠃⠑⠗⠗⠁
+       </div>
+      </div>
+      <div class="alphabet-card">
+       <div class="alphabet-letter">
+        🇳🇿 Веллингтон
+       </div>
+       <div class="braille-dots">
+        ⠺⠑⠇⠇⠊⠝⠛⠞⠕⠝
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="tip-box">
+     <h4 class="tip-title">💡 Зөвлөмж</h4>
+     <p class="tip-content">Брайл бичиг уншихад хурууны мэдрэмж хөгжүүлэх нь чухал. Анх эхлэхдээ том хэмжээтэй брайл бичгээс эхэлж, аажмаар жижиг хэмжээ рүү шилжинэ. Математик, хөгжмийн тэмдэгтүүд нь тусгай комбинацтай байдаг тул тэдгээрийг тусад нь сурах хэрэгтэй.</p>
+    </div>
+   </div>
+   <div id="communication" class="content-card">
+    <h2 class="section-title" id="communication-title">Харилцааны арга барил</h2>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Хараа бэрхшээлтэй хүүхэдтэй харилцах</h3>
+     <p class="lesson-content">• Өөрийгөө танилцуулж, хэн болохоо хэлээрэй<br>
+       • Тодорхой, ойлгомжтой ярьж, зааж өгөөрэй<br>
+       • Орчны тайлбарыг өгч, аюулгүй байдлыг хангаарай<br>
+       • Хүүхдийн бие даасан байдлыг дэмжээрэй<br>
+       • Хүрэхээс өмнө мэдэгдэж, гэнэт гайхуулахгүй байх</p>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Сонсгол бэрхшээлтэй хүүхэдтэй харилцах</h3>
+     <p class="lesson-content">• Нүүр тулж, уруул уншихад тусална<br>
+       • Тодорхой, удаан ярьж, хашгирахгүй байх<br>
+       • Биеийн хэл, дохио ашиглаарай<br>
+       • Бичгээр харилцах боломжийг олгоорой<br>
+       • Тэвчээртэй, ойлгомжтой хандаарай</p>
+    </div>
+    <div class="lesson-item">
+     <h3 class="lesson-title">Хэлний бэрхшээлтэй хүүхэдтэй харилцах</h3>
+     <p class="lesson-content">• Анхааралтай сонсож, яарахгүй байх<br>
+       • Тодорхой асуулт асууж, хариулт хүлээх<br>
+       • Зураг, дохио ашиглан ойлголцох<br>
+       • Хүүхдийн хэлэх оролдлогыг урамшуулах<br>
+       • Алдаа засахаас илүү ойлголцохыг эрмэлзэх</p>
+    </div>
+    <div class="tip-box">
+     <h4 class="tip-title">💡 Ерөнхий зөвлөмж</h4>
+     <p class="tip-content">Тусгай хэрэгцээтэй хүүхэд бүр өөр өөр. Тэдний хэрэгцээ, чадварыг ойлгож, хувь хүний онцлогт нь тохируулан харилцах нь хамгийн чухал. Хүндэтгэл, тэвчээр, хайр энэрэл нь харилцааны үндэс суурь юм.</p>
+    </div>
+    <div class="practice-section">
+     <h3 class="practice-title">Дадлага хийх зүйлс</h3>
+     <div class="practice-item">
+      🎯 Нүдээр харилцах дадлага хийх
+     </div>
+     <div class="practice-item">
+      🎯 Тодорхой зааварчилгаа өгөх дадлага
+     </div>
+     <div class="practice-item">
+      🎯 Тэвчээртэй сонсох чадвар хөгжүүлэх
+     </div>
+     <div class="practice-item">
+      🎯 Биеийн хэл ашиглан харилцах
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "Тусгай Хэрэгцээт Хүүхдүүдтэй Харилцах",
+      subtitle: "Дохионы хэл, брайл бичиг болон харилцааны арга барилыг суралцаарай",
+      sign_language_title: "Дохионы хэл",
+      braille_title: "Брайл бичиг",
+      communication_title: "Харилцааны арга барил",
+      background_color: "#667eea",
+      card_color: "#ffffff",
+      text_color: "#333333",
+      accent_color: "#764ba2",
+      button_color: "#667eea",
+      font_family: "Segoe UI",
+      font_size: 16
+    };
+    
+    async function onConfigChange(config) {
+      const mainTitle = config.main_title || defaultConfig.main_title;
+      const subtitle = config.subtitle || defaultConfig.subtitle;
+      const signLanguageTitle = config.sign_language_title || defaultConfig.sign_language_title;
+      const brailleTitle = config.braille_title || defaultConfig.braille_title;
+      const communicationTitle = config.communication_title || defaultConfig.communication_title;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const cardColor = config.card_color || defaultConfig.card_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const buttonColor = config.button_color || defaultConfig.button_color;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      document.getElementById('main-title').textContent = mainTitle;
+      document.getElementById('subtitle').textContent = subtitle;
+      document.getElementById('sign-language-title').textContent = signLanguageTitle;
+      document.getElementById('braille-title').textContent = brailleTitle;
+      document.getElementById('communication-title').textContent = communicationTitle;
+      
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${accentColor} 100%)`;
+      
+      const cards = document.querySelectorAll('.content-card');
+      cards.forEach(card => {
+        card.style.background = cardColor;
+      });
+      
+      const allText = document.querySelectorAll('.lesson-content, .tip-content, .practice-item');
+      allText.forEach(el => {
+        el.style.color = textColor;
+      });
+      
+      const sectionTitles = document.querySelectorAll('.section-title');
+      sectionTitles.forEach(el => {
+        el.style.color = buttonColor;
+      });
+      
+      const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      document.getElementById('main-title').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('subtitle').style.fontSize = `${baseSize * 1.25}px`;
+      
+      const sectionTitlesFont = document.querySelectorAll('.section-title');
+      sectionTitlesFont.forEach(el => {
+        el.style.fontSize = `${baseSize * 2}px`;
+      });
+      
+      const lessonTitles = document.querySelectorAll('.lesson-title');
+      lessonTitles.forEach(el => {
+        el.style.fontSize = `${baseSize * 1.375}px`;
+      });
+      
+      const lessonContents = document.querySelectorAll('.lesson-content');
+      lessonContents.forEach(el => {
+        el.style.fontSize = `${baseSize}px`;
+      });
+      
+      const tabButtons = document.querySelectorAll('.tab-button');
+      tabButtons.forEach(el => {
+        el.style.fontSize = `${baseSize * 1.125}px`;
+      });
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ card_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ button_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title],
+        ["subtitle", config.subtitle || defaultConfig.subtitle],
+        ["sign_language_title", config.sign_language_title || defaultConfig.sign_language_title],
+        ["braille_title", config.braille_title || defaultConfig.braille_title],
+        ["communication_title", config.communication_title || defaultConfig.communication_title]
+      ]);
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+    
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const contentCards = document.querySelectorAll('.content-card');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetTab = button.getAttribute('data-tab');
+        
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        contentCards.forEach(card => card.classList.remove('active'));
+        
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+      });
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'999323ab24af1531',t:'MTc2MjI0OTExNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
