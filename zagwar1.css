@@ -1,0 +1,11 @@
+/* Дохионы үсэг/гарын загвар */
+.sign-hand {
+    font-size: 4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.sign-hand:hover {
+    transform: scale(1.2) rotate(10deg); /* Хувьсгалт: томруулж, бага зэрэг эргүүлэх */
+}
